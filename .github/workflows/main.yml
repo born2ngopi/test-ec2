@@ -25,6 +25,7 @@ jobs:
     #     # mv ./app/config/example-config.json ./app/config/config.json
     #     go mod tidy
     #     go test ./... -cover -failfast
+    #
 
     - name: running unitest
       run: |

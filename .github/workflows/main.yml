@@ -27,7 +27,9 @@ jobs:
     #     go test ./... -cover -failfast
 
     - name: running unitest
-      run: go test ./... -cover -failfast
+      run: |
+        go mod download golang.org/x/net
+        go test ./... -cover -failfast
 
     - name: login docker to docker hub
       uses: docker/login-action@v1
@@ -37,11 +39,11 @@ jobs:
     
     - name: docker build golang
       run: |
-        docker build . -t needkopi/belajar-ec2:1.0.0
+        sudo docker build . -t needkopi/belajar-ec2:1.0.0
 
     - name: docker push
       run: |
-        docker push needkopi/belajar-ec2:1.0.0
+        sudo docker push needkopi/belajar-ec2:1.0.0
 
   build-deploy:    
     name: "build, push to docker hub, & deploy to ec2"
